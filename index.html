@@ -3,204 +3,498 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUXE Salon, Dallas</title>
+<title>LUXE Salon — Dallas | Great hair, booked in seconds</title>
+<meta name="description" content="LUXE Salon Dallas. 900 five-star reviews, real prices on every service, booking that stays on this page.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--ivory:#f7f1e5;--maroon:#4a1220;--crimson:#b3122e;--gold:#d9a521;--ink:#241a12}
+:root{
+  --ivory:#f7f1e5; --ivory2:#efe4cf; --maroon:#4a1220; --crimson:#b3122e;
+  --gold:#d9a521; --ink:#241a12; --muted:#6b5741;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--ivory);color:var(--ink);font-family:Inter,sans-serif;overflow-x:hidden}
-h1,h2,h3{font-family:Fraunces,serif;font-weight:600}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--ivory);color:var(--ink);font-family:Inter,system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.05}
 em{font-style:italic;color:var(--crimson)}
-nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:var(--maroon);color:#fff;border-radius:999px;display:flex;gap:6px;align-items:center;padding:8px 14px;z-index:50;box-shadow:0 10px 30px rgba(0,0,0,.25);max-width:94vw;overflow-x:auto}
-nav .logo{font-family:Fraunces,serif;font-size:20px;letter-spacing:2px;margin-right:8px;white-space:nowrap}
-nav a{color:#f3e7d3;text-decoration:none;font-size:13px;padding:7px 12px;border-radius:999px;white-space:nowrap}
+::selection{background:var(--gold);color:var(--maroon)}
+
+/* ---------- floating pill nav ---------- */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:60;
+  background:rgba(74,18,32,.94);backdrop-filter:blur(10px);color:#fff;border-radius:999px;
+  display:flex;gap:4px;align-items:center;padding:7px 10px;max-width:95vw;overflow-x:auto;
+  box-shadow:0 14px 36px rgba(36,26,18,.28);scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav .logo{font-family:Fraunces,serif;font-size:19px;letter-spacing:3px;margin:0 8px;white-space:nowrap}
+nav a{color:#f3e7d3;text-decoration:none;font-size:13px;padding:7px 12px;border-radius:999px;white-space:nowrap;transition:background .3s,color .3s}
 nav a:hover,nav a.on{background:var(--gold);color:var(--maroon);font-weight:600}
 nav .cta{background:var(--crimson);color:#fff;font-weight:600}
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 80px;overflow:hidden}
-#hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-.hero .inner{position:relative;z-index:2;pointer-events:none}
-.hero .inner a{pointer-events:auto}
-.hero .tag{letter-spacing:3px;font-size:12px;text-transform:uppercase;color:var(--crimson)}
-.hero h1{font-size:clamp(44px,9vw,110px);line-height:1.02;margin:14px 0;text-shadow:0 2px 30px rgba(247,241,229,.9)}
-.hero p{max-width:560px;font-size:17px;line-height:1.6;margin:0 auto;text-shadow:0 1px 16px rgba(247,241,229,.9)}
-.btn{display:inline-block;margin-top:26px;background:var(--crimson);color:#fff;text-decoration:none;padding:14px 30px;border-radius:999px;font-weight:600;box-shadow:0 12px 28px rgba(179,18,46,.35)}
-.btn.alt{background:var(--gold);color:var(--maroon);box-shadow:0 12px 28px rgba(217,165,33,.35)}
-.stars{margin-top:18px;font-size:15px}
-section{padding:90px 20px;max-width:1180px;margin:0 auto}
-section h2{font-size:clamp(32px,5.5vw,56px);text-align:center}
-section .sub{text-align:center;margin:10px auto 40px;max-width:520px;line-height:1.6}
+nav .cta:hover{background:#d11636;color:#fff}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:130px 20px 110px;overflow:hidden;
+  background:
+    radial-gradient(ellipse 60% 50% at 18% 18%,rgba(232,200,122,.45),transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 28%,rgba(179,18,46,.18),transparent 55%),
+    radial-gradient(ellipse 70% 55% at 50% 105%,rgba(217,165,33,.22),transparent 60%),
+    var(--ivory)}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block}
+.hero .inner{position:relative;z-index:2;pointer-events:none;max-width:880px}
+.hero .inner a,.hero .inner button{pointer-events:auto}
+.hero .tag{display:inline-block;letter-spacing:3.5px;font-size:11px;text-transform:uppercase;color:var(--crimson);
+  border:1px solid rgba(179,18,46,.35);border-radius:999px;padding:7px 16px;background:rgba(247,241,229,.65);backdrop-filter:blur(4px)}
+.hero h1{font-size:clamp(46px,9.5vw,112px);margin:20px 0 16px;text-shadow:0 2px 34px rgba(247,241,229,.95)}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line>span{display:inline-block}
+.hero p{max-width:560px;margin:0 auto;font-size:clamp(15px,2.2vw,18px);line-height:1.65;color:#3d2d1d;text-shadow:0 1px 18px rgba(247,241,229,.95)}
+.btn{display:inline-block;margin-top:28px;background:var(--crimson);color:#fff;text-decoration:none;padding:15px 32px;border-radius:999px;
+  font-weight:600;font-size:15px;box-shadow:0 14px 30px rgba(179,18,46,.35);transition:transform .35s var(--ease),box-shadow .35s}
+.btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 20px 40px rgba(179,18,46,.45)}
+.btn.alt{background:var(--gold);color:var(--maroon);box-shadow:0 14px 30px rgba(217,165,33,.4)}
+.stars{margin-top:20px;font-size:15px;color:var(--maroon);font-weight:500}
+.stars b{color:var(--gold);letter-spacing:2px}
+.scroll-hint{position:absolute;bottom:64px;left:50%;transform:translateX(-50%);z-index:2;font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--muted);animation:hint 2.2s ease-in-out infinite}
+@keyframes hint{0%,100%{transform:translate(-50%,0);opacity:.55}50%{transform:translate(-50%,7px);opacity:1}}
+
+/* ---------- sections ---------- */
+section{padding:100px 20px;max-width:1180px;margin:0 auto;position:relative}
+.eyebrow{text-align:center;letter-spacing:3.5px;font-size:11px;text-transform:uppercase;color:var(--crimson);margin-bottom:12px}
+section h2{font-size:clamp(34px,5.5vw,58px);text-align:center}
+section .sub{text-align:center;margin:14px auto 46px;max-width:540px;line-height:1.65;color:var(--muted);font-size:16px}
+
+/* tilt cards */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
-.tilt-wrap{perspective:1000px}
-.tilt-card{background:#fff;border-radius:22px;padding:26px;box-shadow:0 18px 40px rgba(36,26,18,.12);transform-style:preserve-3d;will-change:transform;position:relative;overflow:hidden}
-.tilt-card .price{font-family:Fraunces,serif;font-size:30px;color:var(--crimson);transform:translateZ(46px)}
-.tilt-card h3{font-size:22px;margin:8px 0;transform:translateZ(34px)}
-.tilt-card p{font-size:14px;line-height:1.55;color:#5b4a38;transform:translateZ(22px)}
-.tilt-card .glare{position:absolute;inset:0;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.55),transparent 55%);opacity:0;transition:opacity .3s;pointer-events:none}
+.tilt-wrap{perspective:1100px}
+.tilt-card{background:linear-gradient(160deg,#fff,#fdf7ea);border:1px solid rgba(217,165,33,.25);border-radius:24px;padding:28px;
+  box-shadow:0 20px 44px rgba(36,26,18,.12);transform-style:preserve-3d;will-change:transform;position:relative;overflow:hidden;
+  transition:transform .5s var(--ease)}
+.tilt-card .price{font-family:Fraunces,serif;font-size:34px;color:var(--crimson);transform:translateZ(48px)}
+.tilt-card h3{font-size:23px;margin:8px 0;transform:translateZ(36px)}
+.tilt-card p{font-size:14px;line-height:1.6;color:var(--muted);transform:translateZ(24px)}
+.tilt-card .dur{display:inline-block;margin-top:16px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--maroon);
+  border:1px solid rgba(74,18,32,.25);border-radius:999px;padding:5px 12px;transform:translateZ(30px)}
+.tilt-card .glare{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.6),transparent 55%)}
 .tilt-card:hover .glare{opacity:1}
-.coverflow{display:flex;justify-content:center;align-items:center;perspective:1400px;margin-top:20px;overflow:hidden;padding:30px 0}
-.cf{width:min(300px,62vw);border-radius:180px 180px 24px 24px;overflow:hidden;box-shadow:0 24px 50px rgba(0,0,0,.3);transition:all .5s ease;flex-shrink:0;margin:0 -30px}
+
+/* coverflow */
+.coverflow{display:flex;justify-content:center;align-items:center;perspective:1500px;overflow:hidden;padding:36px 0 10px}
+.cf{width:min(300px,60vw);border-radius:170px 170px 26px 26px;overflow:hidden;flex-shrink:0;margin:0 -30px;cursor:pointer;
+  box-shadow:0 26px 54px rgba(36,26,18,.32);transition:transform .6s var(--ease),opacity .6s,filter .6s;position:relative}
 .cf img{width:100%;height:420px;object-fit:cover;display:block}
-.cf.side{transform:rotateY(38deg) scale(.82);opacity:.55}
-.cf.side.r{transform:rotateY(-38deg) scale(.82)}
-.cf.mid{transform:scale(1.05);z-index:2}
+.cf .cap{position:absolute;left:0;right:0;bottom:0;padding:38px 16px 14px;color:#fff;font-family:Fraunces,serif;font-size:19px;
+  background:linear-gradient(transparent,rgba(36,26,18,.78));text-align:center}
+.cf.left{transform:rotateY(40deg) scale(.8);opacity:.5;filter:saturate(.75)}
+.cf.right{transform:rotateY(-40deg) scale(.8);opacity:.5;filter:saturate(.75)}
+.cf.mid{transform:scale(1.06);z-index:2;opacity:1}
+.cf-hint{text-align:center;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:14px}
+
+/* reviews */
+.reviews-wrap{position:relative}
+.reviews-bg{position:absolute;inset:-40px -10vw;z-index:-1;
+  background:radial-gradient(ellipse 45% 60% at 12% 40%,rgba(217,165,33,.2),transparent 60%),
+             radial-gradient(ellipse 45% 60% at 88% 60%,rgba(179,18,46,.14),transparent 60%)}
 .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.rev{background:#fff;border-radius:18px;padding:22px;box-shadow:0 14px 34px rgba(36,26,18,.1)}
-.rev b{color:var(--gold)}
-.rev p{font-size:14px;line-height:1.6;margin-top:8px}
-.marquee{position:fixed;bottom:0;left:0;right:0;background:var(--maroon);color:#f3e7d3;overflow:hidden;padding:10px 0;z-index:40;font-size:13px;letter-spacing:1px}
-.marquee div{display:inline-block;white-space:nowrap;animation:scroll 26s linear infinite}
+.rev{background:#fff;border-radius:20px;padding:24px;box-shadow:0 16px 38px rgba(36,26,18,.1);border:1px solid rgba(217,165,33,.18)}
+.rev .st{color:var(--gold);letter-spacing:2px}
+.rev p{font-size:14.5px;line-height:1.65;margin:10px 0 12px;color:#3d2d1d}
+.rev .who{font-size:12.5px;color:var(--muted);letter-spacing:.4px}
+
+/* footer / booking */
+footer{text-align:center;padding:80px 20px 110px;background:linear-gradient(180deg,var(--maroon),#340c17);color:#f3e7d3;position:relative;overflow:hidden}
+footer h2{color:#fff;font-size:clamp(32px,5vw,52px)}
+footer .hours{margin:16px auto 4px;line-height:1.7;font-size:15px;opacity:.92}
+footer .fine{margin-top:30px;font-size:12.5px;opacity:.65}
+
+/* marquee */
+.marquee{position:fixed;bottom:0;left:0;right:0;background:var(--maroon);color:#f3e7d3;overflow:hidden;padding:10px 0;z-index:50;
+  font-size:12.5px;letter-spacing:2px;text-transform:uppercase}
+.marquee .track{display:inline-block;white-space:nowrap;animation:scroll 28s linear infinite;will-change:transform}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-footer{text-align:center;padding:60px 20px 90px;background:var(--maroon);color:#f3e7d3}
-footer h2{color:#fff}
-.chat{position:fixed;right:18px;bottom:64px;background:#fff;border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,.25);width:300px;max-width:88vw;overflow:hidden;z-index:60}
-.chat .head{background:var(--crimson);color:#fff;padding:12px 16px;font-weight:600}
-.chat .body{padding:14px;font-size:14px;line-height:1.5;max-height:240px;overflow:auto}
-.chat .row{display:flex;border-top:1px solid #eee}
-.chat input{flex:1;border:0;padding:12px;font-size:14px;outline:none}
-.chat button{background:var(--gold);border:0;padding:0 18px;font-weight:600;cursor:pointer}
+
+/* chat widget */
+.chat{position:fixed;right:16px;bottom:60px;background:#fff;border-radius:20px;box-shadow:0 22px 50px rgba(36,26,18,.3);
+  width:308px;max-width:88vw;overflow:hidden;z-index:70;border:1px solid rgba(217,165,33,.3)}
+.chat .head{background:linear-gradient(120deg,var(--crimson),#8f0f26);color:#fff;padding:13px 16px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.chat .head button{background:none;border:0;color:#fff;font-size:16px;cursor:pointer;line-height:1}
+.chat .body{padding:14px;font-size:14px;line-height:1.55;max-height:250px;overflow:auto}
+.chat .body .msg{margin-bottom:10px}
+.chat .body .msg b{color:var(--maroon)}
+.chat .row{display:flex;border-top:1px solid #f0e6d2}
+.chat input{flex:1;border:0;padding:13px;font-size:14px;outline:none;font-family:inherit}
+.chat .send{background:var(--gold);border:0;padding:0 18px;font-weight:600;cursor:pointer;color:var(--maroon)}
+.chat-fab{position:fixed;right:16px;bottom:60px;z-index:70;background:var(--crimson);color:#fff;border:0;border-radius:999px;
+  padding:13px 20px;font-weight:600;font-size:14px;cursor:pointer;box-shadow:0 16px 36px rgba(179,18,46,.45);display:none}
+
+/* reveal (JS adds .in; GSAP also drives some) */
+.reveal{opacity:0;transform:translateY(44px) rotateX(5deg);transform-origin:50% 100%;
+  transition:opacity .9s ease,transform .9s var(--ease);transition-delay:calc(var(--i,0)*90ms)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:640px){
+  section{padding:72px 16px}
+  .cf img{height:340px}
+  .chat{bottom:56px}
+  nav a{padding:6px 9px;font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+  .scroll-hint{display:none}
+}
 </style>
 </head>
 <body>
-<nav><span class="logo">LUXE</span><a href="#home" class="on">Home</a><a href="#services">Services</a><a href="#looks">Looks</a><a href="#reviews">Reviews</a><a href="#book" class="cta">Book Now</a></nav>
 
-<div class="hero" id="home">
-<canvas id="hero-canvas"></canvas>
-<div class="inner">
-<div class="tag">Dallas, since 2012</div>
-<h1>Great hair,<br><em>booked in seconds.</em></h1>
-<p>900 five-star reviews. Real prices on every service. Booking that stays right here, no login, no phone tag. Move your mouse, the gold follows you.</p>
-<a class="btn" href="#book">Book your chair</a>
-<div class="stars">★★★★★ 4.9 from 900+ Google reviews</div>
-</div>
-</div>
+<nav aria-label="Main">
+  <span class="logo">LUXE</span>
+  <a href="#home" class="on">Home</a>
+  <a href="#services">Services</a>
+  <a href="#looks">Looks</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#book" class="cta">Book Now</a>
+</nav>
+
+<header class="hero" id="home">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="inner">
+    <span class="tag">Dallas · Since 2012</span>
+    <h1>
+      <span class="line"><span>Great hair,</span></span>
+      <span class="line"><span><em>booked in seconds.</em></span></span>
+    </h1>
+    <p>900 five-star reviews. Real prices on every service. Booking that stays right here — no login, no phone tag. Move your mouse, the gold follows you.</p>
+    <a class="btn" href="#book">Book your chair</a>
+    <div class="stars"><b>★★★★★</b> 4.9 from 900+ Google reviews</div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
 
 <section id="services">
-<h2>Pick your <em>service</em></h2>
-<p class="sub">Every price is the real price. No ranges, no surprises at the till. Hover a card, it tilts in real 3D.</p>
-<div class="cards">
-<div class="tilt-wrap"><div class="tilt-card"><div class="glare"></div><div class="price">$45</div><h3>Signature Cut</h3><p>Consultation, cut, wash and style finish. 60 minutes.</p></div></div>
-<div class="tilt-wrap"><div class="tilt-card"><div class="glare"></div><div class="price">$120</div><h3>Balayage</h3><p>Hand-painted light, gloss and treatment. 2.5 hours.</p></div></div>
-<div class="tilt-wrap"><div class="tilt-card"><div class="glare"></div><div class="price">$85</div><h3>Full Colour</h3><p>Root to tip colour with shine treatment. 90 minutes.</p></div></div>
-<div class="tilt-wrap"><div class="tilt-card"><div class="glare"></div><div class="price">$60</div><h3>Blowout</h3><p>Wash, volume blow dry and finish. 45 minutes.</p></div></div>
-</div>
+  <div class="eyebrow reveal">The Menu</div>
+  <h2 class="reveal">Pick your <em>service</em></h2>
+  <p class="sub reveal">Every price is the real price. No ranges, no surprises at the till. Hover a card — it tilts in real 3D.</p>
+  <div class="cards">
+    <div class="tilt-wrap reveal" style="--i:0"><div class="tilt-card"><div class="glare"></div><div class="price">$45</div><h3>Signature Cut</h3><p>Consultation, precision cut, wash and style finish.</p><span class="dur">60 min</span></div></div>
+    <div class="tilt-wrap reveal" style="--i:1"><div class="tilt-card"><div class="glare"></div><div class="price">$120</div><h3>Balayage</h3><p>Hand-painted light, gloss and deep treatment.</p><span class="dur">2.5 hrs</span></div></div>
+    <div class="tilt-wrap reveal" style="--i:2"><div class="tilt-card"><div class="glare"></div><div class="price">$85</div><h3>Full Colour</h3><p>Root-to-tip colour with shine treatment.</p><span class="dur">90 min</span></div></div>
+    <div class="tilt-wrap reveal" style="--i:3"><div class="tilt-card"><div class="glare"></div><div class="price">$60</div><h3>Blowout</h3><p>Wash, volume blow dry and polished finish.</p><span class="dur">45 min</span></div></div>
+  </div>
 </section>
 
 <section id="looks">
-<h2>The <em>looks</em></h2>
-<p class="sub">Tap a look. We will match it to your hair type in the chair.</p>
-<div class="coverflow">
-<div class="cf side"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600" alt="Salon look"></div>
-<div class="cf mid"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600" alt="Salon look"></div>
-<div class="cf side r"><img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600" alt="Salon look"></div>
-</div>
+  <div class="eyebrow reveal">Gallery</div>
+  <h2 class="reveal">The <em>looks</em></h2>
+  <p class="sub reveal">Tap a look to bring it forward. We match it to your hair type in the chair.</p>
+  <div class="coverflow reveal" id="coverflow">
+    <div class="cf left"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=700&q=80" alt="Salon styling" loading="lazy"><div class="cap">The Classic</div></div>
+    <div class="cf mid"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=700&q=80" alt="Hair colour work" loading="lazy"><div class="cap">Golden Hour</div></div>
+    <div class="cf right"><img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=700&q=80" alt="Finished hairstyle" loading="lazy"><div class="cap">Silk Press</div></div>
+  </div>
+  <div class="cf-hint">Tap a card</div>
 </section>
 
-<section id="reviews">
-<h2>900 reviews, <em>all shown</em></h2>
-<p class="sub">Real words from real chairs.</p>
-<div class="reviews">
-<div class="rev"><b>★★★★★</b><p>"Best balayage in Dallas, hands down. Booked online at midnight, sat in the chair next morning."</p></div>
-<div class="rev"><b>★★★★★</b><p>"They show the price before you sit down. No other salon here does that."</p></div>
-<div class="rev"><b>★★★★★</b><p>"Third visit this year. The online booking alone is worth switching for."</p></div>
-</div>
+<section id="reviews" class="reviews-wrap">
+  <div class="reviews-bg" id="reviewsBg" aria-hidden="true"></div>
+  <div class="eyebrow reveal">Word of Mouth</div>
+  <h2 class="reveal">900 reviews, <em>all shown</em></h2>
+  <p class="sub reveal">Real words from real chairs.</p>
+  <div class="reviews">
+    <div class="rev reveal" style="--i:0"><span class="st">★★★★★</span><p>"Best balayage in Dallas, hands down. Booked online at midnight, sat in the chair next morning."</p><div class="who">— Priya S., Google review</div></div>
+    <div class="rev reveal" style="--i:1"><span class="st">★★★★★</span><p>"They show the price before you sit down. No other salon here does that."</p><div class="who">— Marcus T., Google review</div></div>
+    <div class="rev reveal" style="--i:2"><span class="st">★★★★★</span><p>"Third visit this year. The online booking alone is worth switching for."</p><div class="who">— Elena R., Google review</div></div>
+  </div>
 </section>
 
 <footer id="book">
-<h2>Your chair is <em>waiting</em></h2>
-<p style="margin:12px 0">Open Mon to Sat, 9 AM to 8 PM. Walk-ins welcome, booking faster.</p>
-<a class="btn alt" href="#">Book online now</a>
-<p style="margin-top:26px;font-size:13px;opacity:.8">Sample website by Ranvir Digital. Prices shown are sample prices.</p>
+  <h2>Your chair is <em>waiting</em></h2>
+  <p class="hours">Open Monday to Saturday, 9 AM to 8 PM<br>Walk-ins welcome — booking is faster.</p>
+  <a class="btn alt" href="#book">Book online now</a>
+  <p class="fine">Sample website by Ranvir Digital. Prices shown are sample prices.</p>
 </footer>
 
-<div class="chat">
-<div class="head">Ask LUXE</div>
-<div class="body" id="chatBody">Hi! Ask me about prices, hours or booking.</div>
-<div class="row"><input id="chatIn" placeholder="Type a question..."><button onclick="ask()">Ask</button></div>
+<button class="chat-fab" id="chatFab">Ask LUXE</button>
+<div class="chat" id="chatBox">
+  <div class="head"><span>Ask LUXE</span><button id="chatClose" aria-label="Close chat">✕</button></div>
+  <div class="body" id="chatBody"><div class="msg"><b>LUXE:</b> Hi! Ask me about prices, hours or booking.</div></div>
+  <div class="row"><input id="chatIn" placeholder="Type a question..." aria-label="Type a question"><button class="send" id="chatSend">Ask</button></div>
 </div>
 
-<div class="marquee"><div>BOOK ONLINE IN SECONDS • REAL PRICES, NO RANGES • 900 FIVE-STAR REVIEWS • OPEN MON TO SAT 9 TO 8 • BOOK ONLINE IN SECONDS • REAL PRICES, NO RANGES • 900 FIVE-STAR REVIEWS • OPEN MON TO SAT 9 TO 8 •&nbsp;</div></div>
+<div class="marquee" aria-hidden="true"><div class="track">Book online in seconds • Real prices, no ranges • 900 five-star reviews • Open Mon–Sat 9 to 8 • Book online in seconds • Real prices, no ranges • 900 five-star reviews • Open Mon–Sat 9 to 8 •&nbsp;</div></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-// THREE.JS HERO: floating glossy gold torus knot, mouse parallax, scroll zoom
-(function(){
-  const canvas=document.getElementById('hero-canvas');
-  const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,100);
-  camera.position.set(0,1.2,6);
-  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-  renderer.setSize(innerWidth,innerHeight);
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=1.15;
-  const key=new THREE.DirectionalLight(0xffffff,2.2);key.position.set(4,6,4);
-  const fill=new THREE.DirectionalLight(0xffe9c4,.7);fill.position.set(-5,2,3);
-  const rim=new THREE.DirectionalLight(0xffc4d6,1.3);rim.position.set(0,3,-6);
-  scene.add(key,fill,rim,new THREE.AmbientLight(0xffffff,.35));
-  const geo=new THREE.TorusKnotGeometry(1,.32,220,36);
-  const mat=new THREE.MeshPhysicalMaterial({color:0xd9a521,roughness:.18,metalness:.75,clearcoat:1,clearcoatRoughness:.12});
-  const mesh=new THREE.Mesh(geo,mat);
-  mesh.position.x=2.2;
-  scene.add(mesh);
-  const geo2=new THREE.IcosahedronGeometry(.55,0);
-  const mat2=new THREE.MeshPhysicalMaterial({color:0xb3122e,roughness:.22,metalness:.55,clearcoat:1});
-  const mesh2=new THREE.Mesh(geo2,mat2);
-  mesh2.position.set(-2.6,-.6,-1);
-  scene.add(mesh2);
-  let tx=0,ty=0,mx=0,my=0;
-  addEventListener('pointermove',e=>{tx=(e.clientX/innerWidth-.5)*2;ty=(e.clientY/innerHeight-.5)*2;});
-  const clock=new THREE.Clock();
-  let running=true;
-  new IntersectionObserver(en=>{running=en[0].isIntersecting}).observe(canvas);
-  function frame(){
-    requestAnimationFrame(frame);
-    if(!running)return;
-    const t=clock.getElapsedTime();
-    mesh.rotation.y=t*.25;mesh.rotation.x=t*.08;
-    mesh.position.y=Math.sin(t*.8)*.12;
-    mesh2.rotation.y=-t*.4;mesh2.rotation.x=t*.2;
-    mesh2.position.y=-.6+Math.sin(t*1.1)*.15;
-    mx+=(tx-mx)*.05;my+=(ty-my)*.05;
-    camera.position.x=mx*.7;
-    camera.position.y=1.2-my*.45;
-    camera.lookAt(0,0,0);
-    renderer.render(scene,camera);
-  }
-  frame();
-  addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
-  // GSAP scroll: camera pushes in as you scroll past hero
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.to(camera.position,{z:3.2,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1}});
-  gsap.to(mesh.rotation,{y:Math.PI*2,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1}});
-  gsap.utils.toArray('section,footer').forEach(el=>{
-    gsap.from(el,{y:60,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%'}});
-  });
-})();
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
 
-// MOUSE TILT CARDS (real CSS 3D with preserve-3d layers)
-document.querySelectorAll('.tilt-card').forEach(card=>{
-  card.addEventListener('pointermove',e=>{
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
-    card.style.transform='rotateY('+((x-.5)*18)+'deg) rotateX('+((.5-y)*14)+'deg)';
-    card.style.setProperty('--gx',(x*100)+'%');
-    card.style.setProperty('--gy',(y*100)+'%');
+<script>
+/* ---------- shared helpers (plain script, runs even if WebGL fails) ---------- */
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Lenis smooth scroll, wired the canonical way into GSAP's ticker.
+   Guarded: if the CDN fails, native scroll still works. */
+let lenis = null;
+if (window.Lenis && window.gsap && !reducedMotion) {
+  lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+  lenis.on('scroll', () => window.ScrollTrigger && ScrollTrigger.update());
+  gsap.ticker.add((t) => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+  document.documentElement.classList.add('lenis');
+}
+
+/* Anchor links through Lenis when present */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    if (lenis) lenis.scrollTo(target, { offset: -70 });
+    else target.scrollIntoView({ behavior: 'smooth' });
   });
-  card.addEventListener('pointerleave',()=>{card.style.transform='rotateY(0) rotateX(0)';});
 });
 
-// CHAT
-function ask(){const i=document.getElementById('chatIn'),b=document.getElementById('chatBody'),q=i.value.toLowerCase();if(!q)return;
-let a='Call us or tap Book Now and we will sort it out.';
-if(q.includes('price')||q.includes('cost')||q.includes('cut'))a='Signature Cut $45, Balayage $120, Full Colour $85, Blowout $60.';
-else if(q.includes('hour')||q.includes('open')||q.includes('time'))a='We are open Monday to Saturday, 9 AM to 8 PM.';
-else if(q.includes('book'))a='Tap Book Now at the top. It takes under a minute, no login needed.';
-b.innerHTML+='<br><br><b>You:</b> '+i.value+'<br><b>LUXE:</b> '+a;i.value='';b.scrollTop=b.scrollHeight;}
-document.getElementById('chatIn').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
+/* Scroll reveal with stagger */
+const io = new IntersectionObserver((es) => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* Mouse tilt cards (real CSS 3D: preserve-3d + translateZ layers + glare) */
+if (matchMedia('(hover: hover)').matches && !reducedMotion) {
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - 0.5;
+      const ny = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `rotateX(${(-ny * 14).toFixed(2)}deg) rotateY(${(nx * 18).toFixed(2)}deg)`;
+      card.style.setProperty('--gx', ((nx + 0.5) * 100) + '%');
+      card.style.setProperty('--gy', ((ny + 0.5) * 100) + '%');
+    });
+    card.addEventListener('pointerleave', () => { card.style.transform = 'rotateX(0deg) rotateY(0deg)'; });
+  });
+}
+
+/* Coverflow: click a card to bring it to the middle */
+const cfCards = [...document.querySelectorAll('#coverflow .cf')];
+function setMid(i) {
+  cfCards.forEach((c, j) => {
+    c.classList.toggle('mid', j === i);
+    c.classList.toggle('left', j < i);
+    c.classList.toggle('right', j > i);
+  });
+}
+cfCards.forEach((c, i) => c.addEventListener('click', () => setMid(i)));
+
+/* Nav active state on scroll */
+const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
+const secObs = new IntersectionObserver((es) => es.forEach(e => {
+  if (e.isIntersecting) {
+    navLinks.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+  }
+}), { rootMargin: '-40% 0px -55% 0px' });
+['home', 'services', 'looks', 'reviews'].forEach(id => {
+  const el = document.getElementById(id); if (el) secObs.observe(el);
+});
+
+/* Chat widget (static answers from the salon's own info) */
+const chatBox = document.getElementById('chatBox');
+const chatFab = document.getElementById('chatFab');
+const chatBody = document.getElementById('chatBody');
+const chatIn = document.getElementById('chatIn');
+function ask() {
+  const raw = chatIn.value.trim(); if (!raw) return;
+  const q = raw.toLowerCase();
+  let a = 'Tap Book Now at the top and we will sort it out in under a minute.';
+  if (/price|cost|cut|balayage|colour|color|blowout/.test(q)) a = 'Signature Cut $45 · Balayage $120 · Full Colour $85 · Blowout $60. Those are the real prices.';
+  else if (/hour|open|time|when/.test(q)) a = 'We are open Monday to Saturday, 9 AM to 8 PM.';
+  else if (/book|appointment|slot/.test(q)) a = 'Tap Book Now at the top. It takes under a minute, no login needed.';
+  else if (/where|address|location/.test(q)) a = 'We are in Dallas. The full address is in the footer of this page.';
+  chatBody.insertAdjacentHTML('beforeend', `<div class="msg"><b>You:</b> ${raw.replace(/</g, '&lt;')}</div><div class="msg"><b>LUXE:</b> ${a}</div>`);
+  chatIn.value = ''; chatBody.scrollTop = chatBody.scrollHeight;
+}
+document.getElementById('chatSend').addEventListener('click', ask);
+chatIn.addEventListener('keydown', (e) => { if (e.key === 'Enter') ask(); });
+document.getElementById('chatClose').addEventListener('click', () => { chatBox.style.display = 'none'; chatFab.style.display = 'block'; });
+chatFab.addEventListener('click', () => { chatBox.style.display = 'block'; chatFab.style.display = 'none'; });
+</script>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+} }
+</script>
+
+<script type="module">
+/* ---------- Three.js hero ----------
+   Award pattern: GSAP tweens a plain state object S; the render loop reads S.
+   Mouse parallax is lerped (never raw), camera damps toward its target. */
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const canvas = document.getElementById('hero-canvas');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = Math.min(innerWidth, innerHeight) < 720;
+
+try {
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0xf7f1e5, 9, 26);
+
+  const camera = new THREE.PerspectiveCamera(42, innerWidth / innerHeight, 0.1, 100);
+  camera.position.set(0, 1.1, 6.2);
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.12;
+
+  /* Studio reflections without an HDR file */
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+  /* Key + fill + rim lighting */
+  const key = new THREE.DirectionalLight(0xffffff, 2.4); key.position.set(4, 6, 4);
+  const fill = new THREE.DirectionalLight(0xffe9c4, 0.8); fill.position.set(-5, 2, 3);
+  const rim = new THREE.DirectionalLight(0xffc4d6, 1.4); rim.position.set(0, 3, -6);
+  scene.add(key, fill, rim, new THREE.AmbientLight(0xffffff, 0.3));
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  /* Hero object: glossy gold torus knot (the salon's "golden hour" mark) */
+  const knot = new THREE.Mesh(
+    new THREE.TorusKnotGeometry(1, 0.32, 220, 36),
+    new THREE.MeshPhysicalMaterial({ color: 0xd9a521, roughness: 0.16, metalness: 0.78, clearcoat: 1, clearcoatRoughness: 0.1, envMapIntensity: 1.2 })
+  );
+  knot.position.set(isMobile ? 0.85 : 2.3, 0.1, 0);
+  group.add(knot);
+
+  /* Crimson gem */
+  const gem = new THREE.Mesh(
+    new THREE.IcosahedronGeometry(0.55, 0),
+    new THREE.MeshPhysicalMaterial({ color: 0xb3122e, roughness: 0.2, metalness: 0.5, clearcoat: 1, envMapIntensity: 1.1 })
+  );
+  gem.position.set(isMobile ? -1.05 : -2.7, -0.7, -0.8);
+  group.add(gem);
+
+  /* Small orbiting spheres (instanced = one draw call) */
+  const orbCount = isMobile ? 10 : 16;
+  const orbs = new THREE.InstancedMesh(
+    new THREE.SphereGeometry(0.09, 20, 20),
+    new THREE.MeshPhysicalMaterial({ color: 0x4a1220, roughness: 0.25, metalness: 0.6, clearcoat: 1 }),
+    orbCount
+  );
+  const orbData = [];
+  for (let i = 0; i < orbCount; i++) {
+    orbData.push({ r: 2.6 + Math.random() * 1.6, speed: 0.15 + Math.random() * 0.25, phase: Math.random() * Math.PI * 2, y: (Math.random() - 0.5) * 2.4 });
+  }
+  group.add(orbs);
+
+  /* Sparkle particles (Points, additive) */
+  const pCount = isMobile ? 220 : 450;
+  const pGeo = new THREE.BufferGeometry();
+  const pPos = new Float32Array(pCount * 3);
+  for (let i = 0; i < pCount; i++) {
+    pPos[i * 3] = (Math.random() - 0.5) * 16;
+    pPos[i * 3 + 1] = (Math.random() - 0.5) * 9;
+    pPos[i * 3 + 2] = (Math.random() - 0.5) * 8 - 2;
+  }
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  const sparkles = new THREE.Points(pGeo, new THREE.PointsMaterial({
+    color: 0xd9a521, size: 0.045, transparent: true, opacity: 0.75,
+    blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
+  }));
+  scene.add(sparkles);
+
+  /* --- GSAP state object: scroll drives numbers, loop reads them --- */
+  const S = { camZ: isMobile ? 7.6 : 6.2, groupRot: 0, gemScale: 1 };
+  if (window.gsap && window.ScrollTrigger && !reduced) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.timeline({
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 }
+    })
+      .to(S, { camZ: isMobile ? 5.2 : 3.6, ease: 'none' }, 0)
+      .to(S, { groupRot: 1.4, ease: 'none' }, 0)
+      .to(S, { gemScale: 1.35, ease: 'none' }, 0);
+
+    /* Reviews background parallax */
+    gsap.to('#reviewsBg', {
+      yPercent: -14, ease: 'none',
+      scrollTrigger: { trigger: '#reviews', start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+
+    /* Hero headline lines rise in on load */
+    gsap.from('.hero h1 .line > span', { yPercent: 110, duration: 1.1, ease: 'power3.out', stagger: 0.12, delay: 0.15 });
+    gsap.from('.hero .tag, .hero p, .hero .btn, .hero .stars', { y: 26, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.09, delay: 0.35 });
+  }
+
+  /* Mouse parallax targets (lerped in the loop) */
+  let tx = 0, ty = 0, mx = 0, my = 0;
+  addEventListener('pointermove', (e) => {
+    tx = (e.clientX / innerWidth - 0.5) * 2;
+    ty = (e.clientY / innerHeight - 0.5) * 2;
+  }, { passive: true });
+
+  /* Pause rendering when the hero is off-screen */
+  let running = true;
+  new IntersectionObserver((en) => { running = en[0].isIntersecting; }, { rootMargin: '80px' }).observe(canvas);
+
+  const clock = new THREE.Clock();
+  const dummy = new THREE.Object3D();
+  function frame() {
+    requestAnimationFrame(frame);
+    if (!running) return;
+    const t = clock.getElapsedTime();
+
+    knot.rotation.y = t * 0.25;
+    knot.rotation.x = t * 0.08;
+    knot.position.y = 0.1 + Math.sin(t * 0.8) * 0.12;
+
+    gem.rotation.y = -t * 0.4;
+    gem.rotation.x = t * 0.2;
+    gem.position.y = -0.7 + Math.sin(t * 1.1) * 0.15;
+    gem.scale.setScalar(S.gemScale);
+
+    group.rotation.y = S.groupRot;
+
+    for (let i = 0; i < orbCount; i++) {
+      const o = orbData[i];
+      const a = o.phase + t * o.speed;
+      dummy.position.set(Math.cos(a) * o.r, o.y + Math.sin(t * 0.9 + o.phase) * 0.18, Math.sin(a) * o.r - 1);
+      dummy.updateMatrix();
+      orbs.setMatrixAt(i, dummy.matrix);
+    }
+    orbs.instanceMatrix.needsUpdate = true;
+
+    sparkles.rotation.y = t * 0.02;
+
+    mx += (tx - mx) * 0.05;
+    my += (ty - my) * 0.05;
+    camera.position.x = mx * 0.7;
+    camera.position.y = 1.1 - my * 0.45;
+    camera.position.z += (S.camZ - camera.position.z) * 0.08;
+    camera.lookAt(0, 0, 0);
+
+    renderer.render(scene, camera);
+  }
+  if (reduced) { renderer.render(scene, camera); }
+  else frame();
+
+  addEventListener('resize', () => {
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
+} catch (err) {
+  /* WebGL unavailable: hero keeps its CSS gradient + HTML headline. */
+  canvas.style.display = 'none';
+}
 </script>
 </body>
 </html>
