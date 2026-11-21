@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUXE Salon, Dallas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ivory:#f7f1e5;--maroon:#4a1220;--crimson:#b3122e;--gold:#d9a521;--ink:#241a12}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ivory);color:var(--ink);font-family:Inter,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:Fraunces,serif;font-weight:600}
+em{font-style:italic;color:var(--crimson)}
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:var(--maroon);color:#fff;border-radius:999px;display:flex;gap:6px;align-items:center;padding:8px 14px;z-index:50;box-shadow:0 10px 30px rgba(0,0,0,.25);max-width:94vw;overflow-x:auto}
+nav .logo{font-family:Fraunces,serif;font-size:20px;letter-spacing:2px;margin-right:8px;white-space:nowrap}
+nav a{color:#f3e7d3;text-decoration:none;font-size:13px;padding:7px 12px;border-radius:999px;white-space:nowrap}
+nav a:hover,nav a.on{background:var(--gold);color:var(--maroon);font-weight:600}
+nav .cta{background:var(--crimson);color:#fff;font-weight:600}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 80px;background:radial-gradient(ellipse at 20% 20%,#e8c87a55,transparent 55%),radial-gradient(ellipse at 85% 30%,#b3122e33,transparent 50%),var(--ivory)}
+.hero .tag{letter-spacing:3px;font-size:12px;text-transform:uppercase;color:var(--crimson)}
+.hero h1{font-size:clamp(44px,9vw,110px);line-height:1.02;margin:14px 0}
+.hero p{max-width:560px;font-size:17px;line-height:1.6}
+.btn{display:inline-block;margin-top:26px;background:var(--crimson);color:#fff;text-decoration:none;padding:14px 30px;border-radius:999px;font-weight:600;box-shadow:0 12px 28px rgba(179,18,46,.35)}
+.btn.alt{background:var(--gold);color:var(--maroon);box-shadow:0 12px 28px rgba(217,165,33,.35)}
+.stars{margin-top:18px;font-size:15px}
+section{padding:90px 20px;max-width:1180px;margin:0 auto}
+section h2{font-size:clamp(32px,5.5vw,56px);text-align:center}
+section .sub{text-align:center;margin:10px auto 40px;max-width:520px;line-height:1.6}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;perspective:1200px}
+.card{background:#fff;border-radius:22px;padding:26px;box-shadow:0 18px 40px rgba(36,26,18,.12);transform-style:preserve-3d;transition:transform .35s ease}
+.card:hover{transform:rotateY(8deg) rotateX(4deg) translateY(-6px)}
+.card .price{font-family:Fraunces,serif;font-size:30px;color:var(--crimson)}
+.card h3{font-size:22px;margin:8px 0}
+.card p{font-size:14px;line-height:1.55;color:#5b4a38}
+.coverflow{display:flex;justify-content:center;align-items:center;gap:0;perspective:1400px;margin-top:20px;flex-wrap:nowrap;overflow:hidden;padding:30px 0}
+.cf{width:min(300px,62vw);border-radius:180px 180px 24px 24px;overflow:hidden;box-shadow:0 24px 50px rgba(0,0,0,.3);transition:all .5s ease;flex-shrink:0;margin:0 -30px}
+.cf img{width:100%;height:420px;object-fit:cover;display:block}
+.cf.side{transform:rotateY(38deg) scale(.82);opacity:.55;filter:saturate(.8)}
+.cf.side.r{transform:rotateY(-38deg) scale(.82)}
+.cf.mid{transform:scale(1.05);z-index:2}
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.rev{background:#fff;border-radius:18px;padding:22px;box-shadow:0 14px 34px rgba(36,26,18,.1)}
+.rev b{color:var(--gold)}
+.rev p{font-size:14px;line-height:1.6;margin-top:8px}
+.marquee{position:fixed;bottom:0;left:0;right:0;background:var(--maroon);color:#f3e7d3;overflow:hidden;padding:10px 0;z-index:40;font-size:13px;letter-spacing:1px}
+.marquee div{display:inline-block;white-space:nowrap;animation:scroll 26s linear infinite}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.reveal{opacity:0;transform:translateY(36px);transition:all .8s ease}
+.reveal.in{opacity:1;transform:none}
+footer{text-align:center;padding:60px 20px 90px;background:var(--maroon);color:#f3e7d3}
+footer h2{color:#fff}
+.chat{position:fixed;right:18px;bottom:64px;background:#fff;border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,.25);width:300px;max-width:88vw;overflow:hidden;z-index:60}
+.chat .head{background:var(--crimson);color:#fff;padding:12px 16px;font-weight:600}
+.chat .body{padding:14px;font-size:14px;line-height:1.5;max-height:240px;overflow:auto}
+.chat .row{display:flex;border-top:1px solid #eee}
+.chat input{flex:1;border:0;padding:12px;font-size:14px;outline:none}
+.chat button{background:var(--gold);border:0;padding:0 18px;font-weight:600;cursor:pointer}
+</style>
+</head>
+<body>
+<nav><span class="logo">LUXE</span><a href="#home" class="on">Home</a><a href="#services">Services</a><a href="#looks">Looks</a><a href="#reviews">Reviews</a><a href="#book" class="cta">Book Now</a></nav>
+
+<div class="hero" id="home">
+<div class="tag">Dallas, since 2012</div>
+<h1>Great hair,<br><em>booked in seconds.</em></h1>
+<p>900 five-star reviews. Real prices on every service. Booking that stays right here, no login, no phone tag.</p>
+<a class="btn" href="#book">Book your chair</a>
+<div class="stars">★★★★★ 4.9 from 900+ Google reviews</div>
+</div>
+
+<section id="services" class="reveal">
+<h2>Pick your <em>service</em></h2>
+<p class="sub">Every price is the real price. No ranges, no surprises at the till.</p>
+<div class="cards">
+<div class="card"><div class="price">$45</div><h3>Signature Cut</h3><p>Consultation, cut, wash and style finish. 60 minutes.</p></div>
+<div class="card"><div class="price">$120</div><h3>Balayage</h3><p>Hand-painted light, gloss and treatment. 2.5 hours.</p></div>
+<div class="card"><div class="price">$85</div><h3>Full Colour</h3><p>Root to tip colour with shine treatment. 90 minutes.</p></div>
+<div class="card"><div class="price">$60</div><h3>Blowout</h3><p>Wash, volume blow dry and finish. 45 minutes.</p></div>
+</div>
+</section>
+
+<section id="looks" class="reveal">
+<h2>The <em>looks</em></h2>
+<p class="sub">Tap a look. We will match it to your hair type in the chair.</p>
+<div class="coverflow">
+<div class="cf side"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600" alt="Salon look"></div>
+<div class="cf mid"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600" alt="Salon look"></div>
+<div class="cf side r"><img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600" alt="Salon look"></div>
+</div>
+</section>
+
+<section id="reviews" class="reveal">
+<h2>900 reviews, <em>all shown</em></h2>
+<p class="sub">Real words from real chairs.</p>
+<div class="reviews">
+<div class="rev"><b>★★★★★</b><p>"Best balayage in Dallas, hands down. Booked online at midnight, sat in the chair next morning."</p></div>
+<div class="rev"><b>★★★★★</b><p>"They show the price before you sit down. No other salon here does that."</p></div>
+<div class="rev"><b>★★★★★</b><p>"Third visit this year. The online booking alone is worth switching for."</p></div>
+</div>
+</section>
+
+<footer id="book">
+<h2>Your chair is <em>waiting</em></h2>
+<p style="margin:12px 0">Open Mon to Sat, 9 AM to 8 PM. Walk-ins welcome, booking faster.</p>
+<a class="btn alt" href="#">Book online now</a>
+<p style="margin-top:26px;font-size:13px;opacity:.8">Sample website by Ranvir Digital. Prices shown are sample prices.</p>
+</footer>
+
+<div class="chat">
+<div class="head">Ask LUXE</div>
+<div class="body" id="chatBody">Hi! Ask me about prices, hours or booking.</div>
+<div class="row"><input id="chatIn" placeholder="Type a question..."><button onclick="ask()">Ask</button></div>
+</div>
+
+<div class="marquee"><div>BOOK ONLINE IN SECONDS • REAL PRICES, NO RANGES • 900 FIVE-STAR REVIEWS • OPEN MON TO SAT 9 TO 8 • BOOK ONLINE IN SECONDS • REAL PRICES, NO RANGES • 900 FIVE-STAR REVIEWS • OPEN MON TO SAT 9 TO 8 •&nbsp;</div></div>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function ask(){const i=document.getElementById('chatIn'),b=document.getElementById('chatBody'),q=i.value.toLowerCase();if(!q)return;
+let a='Call us or tap Book Now and we will sort it out.';
+if(q.includes('price')||q.includes('cost')||q.includes('cut'))a='Signature Cut $45, Balayage $120, Full Colour $85, Blowout $60.';
+else if(q.includes('hour')||q.includes('open')||q.includes('time'))a='We are open Monday to Saturday, 9 AM to 8 PM.';
+else if(q.includes('book'))a='Tap Book Now at the top. It takes under a minute, no login needed.';
+b.innerHTML+='<br><br><b>You:</b> '+i.value+'<br><b>LUXE:</b> '+a;i.value='';b.scrollTop=b.scrollHeight;}
+document.getElementById('chatIn').addEventListener('keydown',e=>{if(e.key==='Enter')ask()});
+</script>
+</body>
+</html>
